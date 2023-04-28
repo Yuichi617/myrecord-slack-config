@@ -1,13 +1,19 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: update-cloud-storage
+run-name: ${{ github.actor }} is update slack config
+on:
+  push:
+    branches:
+      - main
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
+  job_id:
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+      - id: 'upload-folder'
+        uses: 'google-github-actions/upload-cloud-storage@v1'
+        with:
+          path: '/myrecord-376903-notifiers-config'
+          destination: 'myrecord-376903-notifiers-config'
