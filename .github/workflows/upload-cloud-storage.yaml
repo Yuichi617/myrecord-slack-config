@@ -7,13 +7,13 @@ on:
 jobs:
   job_id:
     steps:
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
-        with:
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
+      with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-      - id: 'upload-folder'
-        uses: 'google-github-actions/upload-cloud-storage@v1'
-        with:
-          path: '/myrecord-376903-notifiers-config'
-          destination: 'myrecord-376903-notifiers-config'
+    - id: 'upload-folder'
+      uses: 'google-github-actions/upload-cloud-storage@v1'
+      with:
+        path: '/myrecord-376903-notifiers-config'
+        destination: 'myrecord-376903-notifiers-config'
