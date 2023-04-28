@@ -1,5 +1,4 @@
 name: update-cloud-storage
-run-name: ${{ github.actor }} is update slack config
 on:
   push:
     branches:
@@ -8,14 +7,14 @@ jobs:
   upload-files:
     runs-on: ubuntu-latest
     steps:
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v1'
-      with:
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-    - id: 'upload-folder'
-      uses: 'google-github-actions/upload-cloud-storage@v1'
-      with:
-        path: '/home/runner/work/myrecord-slack-config/myrecord-376903-notifiers-config'
-        destination: 'myrecord-376903-notifiers-config'
-        parent: false
+      - id: 'upload-folder'
+        uses: 'google-github-actions/upload-cloud-storage@v1'
+        with:
+          path: 'myrecord-376903-notifiers-config'
+          destination: 'myrecord-376903-notifiers-config'
+          parent: false
