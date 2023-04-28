@@ -13,9 +13,8 @@ jobs:
       uses: 'google-github-actions/auth@v1'
       with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
-    - id: 'upload-folder'
+    - id: 'upload-build-noti-config'
       uses: 'google-github-actions/upload-cloud-storage@v1'
       with:
-        path: './myrecord-376903-notifiers-config'
+        path: 'myrecord-376903-notifiers-config/build-noti-config.yaml'
         destination: 'myrecord-376903-notifiers-config'
-        parent: false
