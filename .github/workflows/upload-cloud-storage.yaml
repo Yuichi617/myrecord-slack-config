@@ -18,3 +18,4 @@ jobs:
       with:
         path: 'myrecord-376903-notifiers-config'
         destination: 'myrecord-376903-notifiers-config'
+        parent: false
